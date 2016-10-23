@@ -1,0 +1,22 @@
+h1 {
+  color: #7c795d;
+  font-family: 'Trocchi', serif;
+  font-size: 45px;
+  font-weight: normal;
+  line-height: 48px;
+  margin: 0;
+}
+
+* {
+  text-align: center;
+  margin: auto;
+}
+
+figcaption {
+  font-size: 20px;
+}
+
+p {
+  width: 80%;
+  margin: auto;
+}

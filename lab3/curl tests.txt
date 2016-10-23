@@ -1,0 +1,45 @@
+For best representation of the program, execute in order:
+
+- get all tasks
+curl -i http://localhost:5000/todo/tasks
+
+- get specific task by id
+curl -i http://localhost:5000/todo/tasks/1
+OR
+curl -i http://localhost:5000/todo/tasks/2
+
+- get specific task by id but fail as task does not exist
+curl -i http://localhost:5000/todo/tasks/3
+
+- create new task with mimetype application/json
+curl -i -H "Content-Type: application/json" -X POST -d '{"title":"pre-order harry potter and the order of the phoenix"}' http://localhost:5000/todo/tasks
+
+- create new task with mimetype text/plain
+curl -i -H "Content-Type: text/plain" -X POST -d 'go for networks make-up lecture on wednesday 6pm' http://localhost:5000/todo/tasks
+
+- create new task with mimetype other than application/json or text/plain but fail:
+curl -i -H "Content-Type: application/octet-stream" -X POST -d 'this task will fail to record' http://localhost:5000/todo/tasks
+
+- then see updated list of tasks
+curl -i http://localhost:5000/todo/tasks
+
+- update an existing task
+curl -u nils:elo -i -H "Content-Type: application/json" -X PUT -d '{"done":true}' http://localhost:5000/todo/tasks/2
+
+- try to update but fail without authentication
+curl -u -i -H "Content-Type: application/json" -X PUT -d '{"done":true}' http://localhost:5000/todo/tasks/1
+
+- delete an existing task
+curl -u nils:elo -i -H "Content-Type: application/json" -X DELETE http://localhost:5000/todo/tasks/1
+
+- try to delete but fail without authentication
+curl -i -H "Content-Type: application/json" -X DELETE http://localhost:5000/todo/tasks/2
+
+- then see updated list of tasks
+curl -i http://localhost:5000/todo/tasks
+
+- Magic 8 Ball: Answers your most profound questions
+curl -i http://localhost:5000/misc/8ball
+
+- Roll Dice: Great for board games
+curl -i http://localhost:5000/misc/dice
